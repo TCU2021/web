@@ -7,18 +7,20 @@
         </div>
         <div class="context" v-for="(item, index) in props.labels" :key="index">
           <div class="text">{{ item }}:</div>
-          <div class="input">
-            <el-input
-              type="text"
-              size="mini"
-              @blur="isHave(index)"
-              v-model="data.values[index]"
-              @keyup.enter="submit"
-              @keyup.esc="reset(index)"
-            ></el-input>
-          </div>
-          <div v-show="data.reminds[index]" class="remind">
-            * {{ item }}不能为空
+          <div class="inputContext">
+            <div class="input">
+              <el-input
+                type="text"
+                size="mini"
+                @blur="isHave(index)"
+                v-model="data.values[index]"
+                @keyup.enter="submit"
+                @keyup.esc="reset(index)"
+              ></el-input>
+            </div>
+            <div v-show="data.reminds[index]" class="remind">
+              * {{ item }}不能为空
+            </div>
           </div>
         </div>
         <div class="buttons">
@@ -125,11 +127,12 @@ export default defineComponent({
   word-wrap: break-word;
   align-items: center;
   margin: 0 30px;
+  height: 50px;
 }
 .text {
   min-width: 150px;
 }
-.input {
+.inputContent {
   margin: 10px 20px;
 }
 .buttons {
@@ -138,12 +141,15 @@ export default defineComponent({
   margin: 30px 0 10px 0;
 }
 .button {
-  width: 100px;
+  width: 40%;
   margin: 0 10px;
   font-size: 20px;
 }
 .title {
   font-size: 20px;
   margin-bottom: 10px;
+}
+.remind{
+  position: absolute;
 }
 </style>

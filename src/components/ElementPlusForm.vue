@@ -89,40 +89,39 @@
       <div
         class="suspensionWindow"
         v-show="insertData.isShow || updataData.isShow"
+        @click="
+          () => {
+            insertData.isShow = false
+            updataData.isShow = false
+          }
+        "
       ></div>
       <div class="insertBody" v-show="insertData.isShow">
-        <Info :labels="insertData.labels"></Info>
-        <div class="cancelButtonPosition">
-          <el-button
-            class="cancel button"
-            plain
-            type="primary"
-            @click="
-              () => {
-                insertData.isShow = false
-              }
-            "
-          >
-            取消
-          </el-button>
+        <div
+          class="iconfont icon"
+          @click="
+            () => {
+              insertData.isShow = false
+            }
+          "
+        >
+          &#xe60c;
         </div>
+        <Info :labels="insertData.labels"></Info>
+        <div class="cancelButtonPosition"></div>
       </div>
       <div class="updataBody" v-show="updataData.isShow">
-        <Info :labels="updataData.labels" :values="updataData.values"></Info>
-        <div class="cancelButtonPosition">
-          <el-button
-            class="cancel button"
-            plain
-            type="primary"
-            @click="
-              () => {
-                updataData.isShow = false
-              }
-            "
-          >
-            取消
-          </el-button>
+        <div
+          class="iconfont icon"
+          @click="
+            () => {
+              updataData.isShow = false
+            }
+          "
+        >
+          &#xe60c;
         </div>
+        <UpdataInfo :labels="updataData.labels" :values="updataData.values"></UpdataInfo>
       </div>
     </div>
   </div>
@@ -130,7 +129,8 @@
 
 <script lang="ts">
 import { defineComponent, reactive, nextTick } from "vue"
-import Info from "@/components/ElementInfo.vue"
+import Info from "@/components/ElementPlusInfo.vue"
+import UpdataInfo from "@/components/Updata/Index.vue"
 export default defineComponent({
   props: {
     selectContent: {
@@ -299,7 +299,8 @@ export default defineComponent({
     }
   },
   components: {
-    Info
+    Info,
+    UpdataInfo
   }
 })
 </script>
@@ -358,18 +359,22 @@ export default defineComponent({
   z-index: 2;
   position: absolute;
   width: 400px;
-  height: 500px;
-  top: 50px;
+  height: 450px;
+  top: 0;
+  bottom: 0;
   left: 0;
   right: 0;
   margin: auto;
   border-radius: 20px;
 }
+.icon {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 30px;
+  cursor: pointer;
+}
 .cancel {
   width: 220px;
-}
-.cancelButtonPosition {
-  width: 100%;
-  text-align: center;
 }
 </style>
