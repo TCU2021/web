@@ -121,7 +121,10 @@
         >
           &#xe60c;
         </div>
-        <UpdataInfo :labels="updataData.labels" :values="updataData.values"></UpdataInfo>
+        <UpdataInfo
+          :labels="updataData.labels"
+          :values="updataData.values"
+        ></UpdataInfo>
       </div>
     </div>
   </div>

@@ -149,7 +149,7 @@ export default defineComponent({
   font-size: 20px;
   margin-bottom: 10px;
 }
-.remind{
+.remind {
   position: absolute;
 }
 </style>

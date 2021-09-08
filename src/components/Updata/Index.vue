@@ -4,16 +4,17 @@
       <div class="search" v-show="!data.isSearch">
         <div class="text">请输入订单编号：</div>
         <div class="input">
-          <el-input v-model="data.inputValue"></el-input>
+          <el-input v-model="data.inputValue" @keyup.enter="search"></el-input>
         </div>
         <el-button
           class="button"
           type="primary"
+          @keyup.enter="search"
           @click="search"
           v-loading="data.loading"
         >
-          查询</el-button
-        >
+          查询.
+        </el-button>
       </div>
       <div v-show="data.isSearch">
         <Info :values="props.values" :labels="props.labels"></Info>
@@ -24,6 +25,7 @@
 
 <script lang="ts">
 import Info from "@/components/ElementPlusInfo.vue"
+import { ElMessage } from "element-plus"
 import { defineComponent, reactive } from "vue"
 export default defineComponent({
   props: {
@@ -50,6 +52,10 @@ export default defineComponent({
       setTimeout(() => {
         data.isSearch = true
         data.loading = false
+        ElMessage({
+          type: "success",
+          message: "查询成功"
+        })
       }, 500)
     }
     return { props, data, search }
