@@ -1,7 +1,11 @@
 <template>
   <div class="container">
     <div class="content">
-      <Sidebar :sidebars="navigationList" class="sidebar" @click="setPathTitle()" />
+      <Sidebar
+        :sidebars="navigationList"
+        class="sidebar"
+        @click="setPathTitle()"
+      />
       <div class="show">
         <router-view class="view" v-slot="{ Component }">
           <div class="header">
@@ -24,7 +28,9 @@
               </el-scrollbar>
             </div>
           </div>
-          <div class="footer"></div>
+          <div class="footer">
+            <div class="time">{{data.time}}</div>
+          </div>
         </router-view>
       </div>
     </div>
@@ -36,12 +42,14 @@ import { defineComponent, reactive } from "vue"
 import Sidebar from "@/views/Sidebar.vue"
 import { useRoute } from "vue-router"
 import { navigationList } from "@/context/navigation"
+import { getTime } from "@/util/time.ts"
 export default defineComponent({
   name: "Index",
   setup() {
     const route = useRoute()
     const data = reactive({
-      pathTitle: ""
+      pathTitle: "",
+      time: ""
     })
     const setPathTitle = () => {
       let path = ""
@@ -61,6 +69,9 @@ export default defineComponent({
       console.log(str)
     }
     setPathTitle()
+    setInterval(() => {
+      data.time = "" + getTime()
+    },1000)
     return { navigationList, setPathTitle, data }
   },
   components: {

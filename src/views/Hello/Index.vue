@@ -1,34 +1,23 @@
 <template>
-  <div class="container">
-    <div class="title">
-      阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴
-    </div>
-    <div class="title">
-      阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴
-    </div>
-    <div class="title">
-      阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴
-    </div>
-    <div class="title">
-      阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴
-    </div>
-    <div class="title">
-      阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴
-    </div>
-    <div class="title">
-      阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴
-    </div>
-    <div class="title">
-      阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴
-    </div>
-    <div class="title">
-      阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴
-    </div>
-    <div class="title">
-      阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴
-    </div>
-    <div class="title">
-      阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴
+  <div>
+    <div class="container">
+      <div class="orderCount">
+        <div class="part">
+          <span class="text">当前共有</span>
+          <span class="count">100</span>
+          <span class="text">个订单正在进行中</span>
+        </div>
+        <div class="part">
+          <span class="text">已处理</span>
+          <span class="count">100</span>
+          <span class="text">个订单</span>
+        </div>
+        <div class="part">
+          <span class="text">共处理过</span>
+          <span class="count">100</span>
+          <span class="text">个订单</span>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -43,14 +32,11 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-.title {
-  width: calc(100% - 2 * 10px);
-  word-wrap: break-word;
-  margin: 10px;
-  font-size: 40px;
+.text{
+  font-size: 30px;
 }
-.container {
-  display: flex;
-  flex-wrap: wrap;
+.count{
+  font-size: 40px;
+  margin: 0 10px;
 }
 </style>

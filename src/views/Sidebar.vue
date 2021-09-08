@@ -2,7 +2,7 @@
   <div class="container">
     <div class="title">
       <img src="@/assets/logo.png" class="logo" />
-      <span>快取餐管理系统</span>
+      <span style="font-size:18px;">快取餐管理系统</span>
     </div>
     <el-menu
       :uniqueOpened="true"
