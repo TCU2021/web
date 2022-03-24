@@ -49,7 +49,8 @@
 import { defineComponent, reactive } from "vue"
 import { useRouter } from "vue-router"
 import { ElMessage } from "element-plus"
-import { setCookie } from "@/util/cookie.ts"
+import { setCookie } from "@/util/cookie"
+
 export default defineComponent({
   setup() {
     const router = useRouter()
