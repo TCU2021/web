@@ -16,7 +16,10 @@
           </div>
           <div class="main">
             <div class="main-context">
-              <el-scrollbar class="main-context-scrollbar">
+              <el-scrollbar
+                class="main-context-scrollbar"
+                view-style="height:100%;width:100%;"
+              >
                 <keep-alive>
                   <component :is="Component" />
                 </keep-alive>
@@ -29,7 +32,7 @@
             </div>
           </div>
           <div class="footer">
-            <div class="time">{{data.time}}</div>
+            <div class="time">{{ data.time }}</div>
           </div>
         </router-view>
       </div>
@@ -42,14 +45,14 @@ import { defineComponent, reactive } from "vue"
 import Sidebar from "@/views/Sidebar.vue"
 import { useRoute } from "vue-router"
 import { navigationList } from "@/context/navigation"
-import { getTime } from "@/util/time.ts"
+import { getTime } from "@/util/time"
 export default defineComponent({
   name: "Index",
   setup() {
     const route = useRoute()
     const data = reactive({
       pathTitle: "",
-      time: ""
+      time: "",
     })
     const setPathTitle = () => {
       let path = ""
@@ -65,22 +68,24 @@ export default defineComponent({
       }, 40)
     }
     window.onload = () => {
-      let str = setPathTitle()
-      console.log(str)
+      clearInterval()
+      setPathTitle()
+      // let str = setPathTitle()
+      // console.log(str)
     }
     setPathTitle()
     setInterval(() => {
       data.time = "" + getTime()
-    },1000)
+    }, 1000)
     return { navigationList, setPathTitle, data }
   },
   components: {
-    Sidebar
-  }
+    Sidebar,
+  },
 })
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .container,
 .content,
 .show,
@@ -127,5 +132,19 @@ export default defineComponent({
 .show {
   flex: 1;
   min-width: 0;
+}
+
+//为订单区分状态
+.orderList-one {
+  background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+}
+.orderList-two {
+  background-image: linear-gradient(to right, #fa709a 0%, #fee140 100%);
+}
+.orderList-three {
+  background-image: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
+}
+.orderList-four {
+  background-image: linear-gradient(25deg, #f19135, #cfbb33, #a0de31, #44ff2e)
 }
 </style>

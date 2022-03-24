@@ -64,12 +64,21 @@ export default defineComponent({
 </script>
 
 <style scoped lang="scss">
-.search {
+.container {
+  margin: -50px;
+  padding: 80px 40px 80px 40px;
+  background-color: white;
+  border-radius: 20px;
+}
+.inputParts {
   display: flex;
   align-items: center;
 }
-.input {
-  width: 300px;
-  margin: 0 20px;
+.text{
+  width: 270px;
+}
+.button {
+  margin-top: 20px;
+  float: right;
 }
 </style>

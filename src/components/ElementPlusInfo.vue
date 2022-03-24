@@ -119,6 +119,10 @@ export default defineComponent({
 
 <style scoped lang="scss">
 .container {
+  margin: -40px -40px;
+  padding: 50px;
+  background-color: white;
+  border-radius: 20px;
   max-height: 100%;
 }
 .context {
@@ -151,5 +155,6 @@ export default defineComponent({
 }
 .remind {
   position: absolute;
+  color: red;
 }
 </style>

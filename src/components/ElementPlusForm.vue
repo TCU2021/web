@@ -76,7 +76,7 @@
           :cell-style="{ textAlign: 'center' }"
           v-if="data.tableUpdate"
         >
-          <el-table-column type="index" />
+          <el-table-column type="index" v-if="tableData.length > 0" />
           <el-table-column
             v-for="(column, i) in columns"
             :key="i"
@@ -138,32 +138,32 @@ export default defineComponent({
   props: {
     selectContent: {
       type: Array,
-      default: () => []
+      default: () => [],
     },
     tableData: {
       type: Array,
-      default: () => []
+      default: () => [],
     },
     columns: {
       type: Array,
-      default: () => []
+      default: () => [],
     },
     buttonNames: {
       type: Array,
-      default: () => []
+      default: () => [],
     },
     insertFunction: {
       type: Function,
       default: () => {
         return 0
-      }
+      },
     },
     updataFunction: {
       type: Function,
       default: () => {
         return 0
-      }
-    }
+      },
+    },
   },
   setup(props) {
     const data: {
@@ -175,7 +175,7 @@ export default defineComponent({
       selectValue: [],
       showData: [],
       tableUpdate: true,
-      loading: false
+      loading: false,
     })
     const insertData: {
       labels: Array<string>
@@ -187,9 +187,9 @@ export default defineComponent({
         "用户姓名",
         "用户联系电话",
         "骑手姓名",
-        "骑手联系电话"
+        "骑手联系电话",
       ],
-      isShow: false
+      isShow: false,
     })
     const updataData: {
       labels: Array<string>
@@ -202,7 +202,7 @@ export default defineComponent({
         "用户姓名",
         "用户联系电话",
         "骑手姓名",
-        "骑手联系电话"
+        "骑手联系电话",
       ],
       values: [
         "123456",
@@ -210,9 +210,9 @@ export default defineComponent({
         "某人",
         "15987548555",
         "某骑手",
-        "46513278946"
+        "46513278946",
       ],
-      isShow: false
+      isShow: false,
     })
     const setData = () => {
       data.loading = true
@@ -298,13 +298,13 @@ export default defineComponent({
       updataData,
       setData,
       resetSelectValue,
-      buttonFunctions
+      buttonFunctions,
     }
   },
   components: {
     Info,
-    UpdataInfo
-  }
+    UpdataInfo,
+  },
 })
 </script>
 
@@ -358,23 +358,21 @@ export default defineComponent({
 .updataBody,
 .insertBody {
   padding: 50px;
-  background-color: white;
   z-index: 2;
   position: absolute;
-  width: 400px;
-  height: 450px;
+  width: 500px;
+  height: 0px;
   top: 0;
-  bottom: 0;
+  bottom: 500px;
   left: 0;
   right: 0;
   margin: auto;
-  border-radius: 20px;
 }
 .icon {
   position: absolute;
   top: 20px;
   right: 20px;
-  font-size: 30px;
+  font-size: 40px;
   cursor: pointer;
 }
 .cancel {
