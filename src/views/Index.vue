@@ -145,6 +145,12 @@ export default defineComponent({
   background-image: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
 }
 .orderList-four {
-  background-image: linear-gradient(25deg, #f19135, #cfbb33, #a0de31, #44ff2e)
+  background-image: linear-gradient(25deg, #f19135, #cfbb33, #a0de31, #44ff2e);
+}
+
+//为是否停用区分状态
+.is-stop {
+  opacity: 0.5;
+  color: #fa709a;
 }
 </style>

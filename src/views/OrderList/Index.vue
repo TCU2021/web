@@ -55,6 +55,7 @@ import { defineComponent, reactive } from "vue"
 import { stateList } from "@/context/state"
 import axios from "axios"
 import AddOrder from "./AddOrder/Index.vue"
+import { ElNotification } from "element-plus"
 export default defineComponent({
   setup() {
     const data = reactive({
@@ -118,6 +119,7 @@ export default defineComponent({
           data: {
             userTelephone: data[0],
             location: data[1],
+            name: data[2],
           },
         })
         .then(res => {
@@ -129,6 +131,16 @@ export default defineComponent({
             // nextTick(() => {
             //   data.refresh = true
             // })
+            ElNotification({
+              title: "添加成功",
+              type: "success",
+            })
+          } else {
+            ElNotification({
+              title: "添加失败",
+              message: res.data.message,
+              type: "warning",
+            })
           }
         })
     }
@@ -155,20 +167,7 @@ export default defineComponent({
     display: flex;
     .buttons {
       margin-left: auto;
-      .button {
-      }
     }
-  }
-  .mask {
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    top: 0;
-    background-color: rgba($color: #000000, $alpha: 0.5);
-    z-index: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
   }
 }
 </style>

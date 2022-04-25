@@ -49,21 +49,25 @@
 import { defineComponent, reactive } from "vue"
 import { useRouter } from "vue-router"
 import { ElMessage } from "element-plus"
-import { setCookie } from "@/util/cookie"
+import { getCookie, setCookie } from "@/util/cookie"
 
 export default defineComponent({
   setup() {
     const router = useRouter()
+    if (getCookie("isLogin")) {
+      router.push("/")
+    }
+
     const data = reactive({
       username: "",
       password: "",
       showUsernameRemind: false,
       showPasswordRemind: false,
-      bLoading: false
+      bLoading: false,
     })
     const user = {
       username: "admin",
-      password: "123456"
+      password: "admin",
     }
     const isHaveUsername = () => {
       if (data.username === "") {
@@ -89,24 +93,24 @@ export default defineComponent({
           ElMessage({
             message: "登录成功！",
             type: "success",
-            duration: 500
+            duration: 1000,
           })
           setCookie("isLogin", "true", 100 / 24 / 6)
           setTimeout(() => {
             router.push("/")
-          }, 500)
+          }, 1000)
         } else {
           ElMessage({
             message: "登录失败：请检查用户名与密码。",
             type: "error",
-            duration: 500
+            duration: 1000,
           })
         }
         data.bLoading = false
       }, 300)
     }
     return { data, user, isHaveUsername, isHavePassword, loginCheck }
-  }
+  },
 })
 </script>
 

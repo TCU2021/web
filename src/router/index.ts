@@ -7,7 +7,7 @@ const routes: Array<RouteRecordRaw> = [
     name: "Index",
     component: () =>
       import(/* webpackChunkName: "Index" */ "@/views/Index.vue"),
-    redirect: "Hello",
+    redirect: "OrderList",
     children: [...infoList],
   },
   {

@@ -1,6 +1,10 @@
 <template>
   <div class="AddOrderContainer">
-    <div class="item" v-for="(item, index) in data.labels" :key="index">
+    <div class="item" v-if="title.length > 0">
+      <div class="text">{{ title[0] }}：</div>
+      <div class="input">{{ title[1] }}</div>
+    </div>
+    <div class="item" v-for="(item, index) in labels" :key="index">
       <div class="text">{{ item }}：</div>
       <div class="input"><input v-model="data.datas[index]" /></div>
     </div>
@@ -13,11 +17,27 @@
 <script lang="ts">
 import { defineComponent, reactive } from "vue"
 export default defineComponent({
+  props: {
+    labels: {
+      type: Array,
+      default: () => [],
+    },
+    currentData: {
+      type: Array,
+      default: () => [],
+    },
+    title: {
+      type: Array,
+      default: () => [],
+    },
+  },
   setup(props, context) {
-    const data: { datas: Array<string> } = reactive({
+    const data: { datas: Array<any> } = reactive({
       datas: [],
-      labels: ["用户电话", "送餐位置",'餐饮名称'],
     })
+    for (let i = 0; i < props.currentData.length; i++) {
+      data.datas[i] = "" + props.currentData[i]
+    }
     const submit = () => {
       context.emit("submit", data.datas)
     }
